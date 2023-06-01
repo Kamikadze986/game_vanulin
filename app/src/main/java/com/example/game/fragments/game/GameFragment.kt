@@ -28,12 +28,12 @@ class GameFragment : Fragment() {
     var isUserHod = MutableStateFlow(true)
     private lateinit var viewModel: GameViewModel
     var currentProgress: ProgressBar? = null
-
+    lateinit var handler: Handler
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        handler = Handler(Looper.getMainLooper())
         viewModel = ViewModelProvider(this)[GameViewModel::class.java]
         _binding = FragmentGameBinding.inflate(inflater, container, false)
         st1 = arguments?.getInt("st1") ?: 20
@@ -44,10 +44,10 @@ class GameFragment : Fragment() {
             R.string.progress,
             "первая"
         )
-        if(st1>st2){
+        if (st1 > st2) {
             binding.stack1.max = st1
             binding.stack2.max = st1
-        }else{
+        } else {
             binding.stack1.max = st2
             binding.stack2.max = st2
         }
@@ -82,7 +82,8 @@ class GameFragment : Fragment() {
                 }
                 isUserHod.value = !isUserHod.value
                 setEditText()
-                Handler(Looper.getMainLooper()).postDelayed({
+
+                handler.postDelayed({
                     when ((0..1).random()) {
                         0 -> {
                             if (binding.stack1.progress > 1) {
@@ -112,11 +113,13 @@ class GameFragment : Fragment() {
                 if (binding.stack1.progress == 1 && binding.stack2.progress == 1) {
                     Toast.makeText(requireContext(), "Вы проиграли", Toast.LENGTH_LONG).show()
                     binding.button.isClickable = false
+                    handler.removeCallbacksAndMessages(null)
                 }
             } else {
                 if (binding.stack1.progress == 1 && binding.stack2.progress == 1) {
                     Toast.makeText(requireContext(), "Бот проиграл", Toast.LENGTH_LONG).show()
                     binding.button.isClickable = false
+                    handler.removeCallbacksAndMessages(null)
                 }
                 binding.golova.text = "Ход противника"
             }
