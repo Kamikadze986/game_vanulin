@@ -7,25 +7,44 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.game.MainFragment"
+        android:name="com.example.game.fragments.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            android:id="@+id/action_mainFragment_to_gameSettingsPresetFragment"
+            app:destination="@id/gameSettingsPresetFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.game.SettingsFragment"
+        android:name="com.example.game.fragments.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.game.GameFragment"
+        android:name="com.example.game.fragments.game.GameFragment"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game" >
+        <argument
+            android:name="st1"
+            app:argType="integer"
+            android:defaultValue="20" />
+        <argument
+            android:name="st2"
+            app:argType="integer"
+            android:defaultValue="20" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameSettingsPresetFragment"
+        android:name="com.example.game.fragments.gamePreset.GameSettingsPresetFragment"
+        android:label="fragment_game_settings_preset"
+        tools:layout="@layout/fragment_game_settings_preset" >
+        <action
+            android:id="@+id/action_gameSettingsPresetFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
 </navigation>

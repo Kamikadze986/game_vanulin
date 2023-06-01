@@ -1,4 +1,4 @@
-package com.example.game
+package com.example.game.fragments.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.example.game.R
 import com.example.game.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.settingsFragment)
         }
         binding.startGame.setOnClickListener {
-            findNavController().navigate(R.id.gameFragment)
+            findNavController().navigate(R.id.gameSettingsPresetFragment)
         }
         super.onViewCreated(view, savedInstanceState)
     }

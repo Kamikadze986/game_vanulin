@@ -1,7 +1,7 @@
-package com.example.game
+package com.example.game.fragments.main
 
 import androidx.lifecycle.ViewModel
 
-class SettingsViewModel : ViewModel() {
+class MainViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }
