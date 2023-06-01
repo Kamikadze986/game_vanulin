@@ -1,7 +1,7 @@
 package com.example.game
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.game.databinding.ActivityMainBinding
 

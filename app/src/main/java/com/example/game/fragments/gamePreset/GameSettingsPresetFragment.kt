@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.game.R
-import com.example.game.databinding.FragmentGameBinding
 import com.example.game.databinding.FragmentGameSettingsPresetBinding
-import java.lang.Exception
 
 class GameSettingsPresetFragment : Fragment() {
     var _binding: FragmentGameSettingsPresetBinding? = null
@@ -28,19 +26,19 @@ class GameSettingsPresetFragment : Fragment() {
     ): View {
         _binding = FragmentGameSettingsPresetBinding.inflate(inflater, container, false)
         binding.button.setOnClickListener {
-            val bundle=Bundle()
+            val bundle = Bundle()
             try {
-                bundle.putInt("st1",binding.editText2.text.toString().toInt())
+                bundle.putInt("st1", binding.editText2.text.toString().toInt())
 
-            }catch (e:Exception){
+            } catch (e: Exception) {
 
             }
             try {
-                bundle.putInt("st2",binding.editText3.text.toString().toInt())
-            }catch (e:Exception){
+                bundle.putInt("st2", binding.editText3.text.toString().toInt())
+            } catch (e: Exception) {
 
             }
-            findNavController().navigate(R.id.gameFragment,bundle)
+            findNavController().navigate(R.id.gameFragment, bundle)
         }
         return binding.root
     }

@@ -9,10 +9,5 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.shareIn
 
 class GameViewModel : ViewModel() {
-    fun st1Value(progress: Int) = MutableLiveData(progress)
-
-    fun st2Value(progress: Int) = MutableLiveData(progress)
-    fun st2ValueFlow(progress: ProgressBar) =
-        flowOf(progress.progress).shareIn(viewModelScope, SharingStarted.Eagerly, 1)
 
 }

@@ -44,8 +44,14 @@ class GameFragment : Fragment() {
             R.string.progress,
             "первая"
         )
-        binding.stack1.max = st1
-        binding.stack2.max = st2
+        if(st1>st2){
+            binding.stack1.max = st1
+            binding.stack2.max = st1
+        }else{
+            binding.stack1.max = st2
+            binding.stack2.max = st2
+        }
+
         binding.stack1.progress = st1
         binding.stack2.progress = st2
 
@@ -85,6 +91,7 @@ class GameFragment : Fragment() {
                                 motion(binding.stack2, binding.stack1)
                             }
                         }
+
                         1 -> {
                             if (binding.stack2.progress > 1) {
                                 motion(binding.stack2, binding.stack1)
@@ -104,12 +111,12 @@ class GameFragment : Fragment() {
                 binding.golova.text = "Ваш Ход"
                 if (binding.stack1.progress == 1 && binding.stack2.progress == 1) {
                     Toast.makeText(requireContext(), "Вы проиграли", Toast.LENGTH_LONG).show()
-                    binding.button.isClickable=false
+                    binding.button.isClickable = false
                 }
             } else {
                 if (binding.stack1.progress == 1 && binding.stack2.progress == 1) {
                     Toast.makeText(requireContext(), "Бот проиграл", Toast.LENGTH_LONG).show()
-                    binding.button.isClickable=false
+                    binding.button.isClickable = false
                 }
                 binding.golova.text = "Ход противника"
             }
